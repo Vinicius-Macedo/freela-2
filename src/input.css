@@ -1,0 +1,211 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/** BASE */
+
+html {
+  font-size: 16px;
+}
+
+/******************* HEADER *******************/
+
+/** NAVBAR */
+
+#overlay {
+  background: rgba(0, 0, 0, 0.3);
+  @apply invisible fixed top-0 left-0 h-full w-full z-10;
+}
+
+.navbar {
+  transition: 0.5s;
+  @apply w-full flex flex-wrap justify-between items-center px-12 py-8 fixed top-0 left-0 z-20 lg:py-0
+  xl:px-32;
+}
+
+.navbar .navlist {
+  transition: 0.5s;
+  @apply px-16 lg:px-0 h-screen absolute -left-full top-full border-b-2 border-orange bg-lightOrange
+    /* TABLET */
+    lg:ml-auto lg:left-0 lg:static lg:w-auto lg:flex lg:h-auto lg:bg-transparent;
+}
+
+.navbar.active .navlist {
+  @apply left-0;
+}
+
+.navbar .navlist .navlist-li {
+  @apply font-semibold h-30 flex justify-center items-center lg:h-36;
+}
+
+.navbar .navlist .navlist-li-drop {
+  transition: 0.5s;
+  @apply relative font-semibold h-30 flex justify-center items-center lg:h-36 lg:justify-start;
+}
+
+.navbar .navlist .navlist-li .navlist-a,
+.navbar .navlist .navlist-li-drop .navlist-a-drop {
+  @apply flex h-full w-full justify-start items-center text-base text-white lg:hover:text-black lg:flex lg:items-center lg:p-0 lg:px-8;
+}
+
+.navbar .navlist .navlist-li-drop .drop-ul {
+  transition: 0.5s;
+  @apply z-30 absolute left-0 lg:-translate-x-25p lg:left-25p top-full lg:top-42p bg-white border-solid border border-darkGrey w-114 rounded h-0 invisible overflow-y-hidden;
+}
+
+.navbar .navlist .navlist-li-drop.opened {
+  @apply mb-63 lg:mb-0;
+}
+
+.navbar .navlist .navlist-a-drop:hover .dropdown {
+  @apply lg:hover:fill-black;
+}
+
+.navbar .navlist .navlist-li-drop .navlist-a-drop .dropdown {
+  @apply ml-2 w-15 h-15;
+}
+
+.navbar .navlist .navlist-li-drop.opened .navlist-a-drop .dropdown {
+  transition: 0.3s;
+  @apply rotate-180;
+}
+
+.navbar .navlist .navlist-li-drop.opened .drop-ul {
+  @apply h-63 visible overflow-y-scroll;
+}
+
+.navbar .navlist .navlist-li-drop .drop-ul .drop-li {
+  @apply flex justify-center items-center;
+}
+
+.navbar .navlist .navlist-li-drop .drop-a {
+  @apply lg:hover:text-orange border-b py-4 border-grey border-solid flex justify-center items-center w-full h-full;
+}
+
+.navbar .navbar-logo {
+  @apply font-bold text-white;
+}
+
+/* bars */
+
+.navbar .toggle-btn {
+  @apply w-30 h-20 flex justify-center items-center
+    /* breakpoint */
+    lg:hidden;
+}
+
+.navbar .toggle-btn .toggle-bars {
+  height: 3px;
+  transition: 0.5s;
+  @apply w-18 bg-white block relative;
+}
+
+.navbar .toggle-bars::before,
+.toggle-bars::after {
+  height: 3px;
+  transition: 0.3s;
+  content: "";
+  @apply w-18 bg-white inline-block absolute left-0;
+}
+
+.navbar .toggle-bars::before {
+  top: -10px;
+}
+
+.navbar .toggle-bars::after {
+  top: 10px;
+}
+
+.navbar.active .toggle-btn .toggle-bars {
+  @apply bg-transparent;
+}
+
+.navbar.active .toggle-btn .toggle-bars::before {
+  @apply top-0 -rotate-45;
+}
+
+.navbar.active .toggle-btn .toggle-bars::after {
+  @apply top-0 rotate-45;
+}
+
+.li-noticias {
+  width: 300px;
+  @apply rounded bg-grey p-8 h-40 shrink-0 flex items-center;
+}
+
+/** END HEADER **/
+
+/******************* MAIN *******************/
+
+.noticias-h2 {
+  @apply font-bold relative sm:text-semi;
+}
+
+.noticias-h2:after {
+  display: block;
+  content: "";
+  width: 60px;
+  height: 3px;
+  background: #faa300;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+}
+
+.noticias-li {
+  @apply border-b border-b-darkGrey pb-8;
+}
+
+.col-noticias-fatos {
+  @apply rounded mx-6 p-8  bg-grey;
+}
+
+.social-col {
+  @apply w-20;
+}
+
+.btn-white {
+  @apply cursor-pointer rounded mt-4 h-auto  px-16 py-4 text-orange bg-white font-bold lg:hover:bg-grey;
+}
+
+.input-investimentos {
+  background: #f8fafc;
+  @apply px-4
+     rounded
+     w-full
+     h-24
+    
+}
+
+.input-col, .input-col-2 {
+  @apply px-8 py-4 w-full rounded-full
+  sm:w-140
+}
+
+.input-col {
+  @apply
+  lg:w-120
+}
+
+.input-falar {
+  @apply
+  flex flex-col gap-4 w-full
+}
+
+
+
+@media only screen and (min-width: 1024px) {
+  
+  .main-container {
+    margin: 0 32px;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .main-container {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+  }
+}
